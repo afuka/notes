@@ -26,11 +26,11 @@
 
 # HTTP报文结构
 
-![image-20210301171833306](/Users/afuka/Documents/Typora/服务端积累/assert/image-20210301171833306.png)
+![image-20210301171833306](./assert/image-20210301171833306.png)
 
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/885859-20190724173230609-1990595514.png)
+![img](./assert/885859-20190724173230609-1990595514.png)
 
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/885859-20190724173242717-440362909.png)
+![img](./assert/885859-20190724173242717-440362909.png)
 
 
 
@@ -78,4 +78,5 @@ HTTPS为了兼顾安全与效率，**同时使用了对称加密和非对称加�
 
 
 
-![img](https://upload-images.jianshu.io/upload_images/627325-dc83fef6ac2e6c88.png?imageMogr2/auto-orient/strip|imageView2/2/format/webp)
+![img](./assert/https.png)
+

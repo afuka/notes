@@ -1,1 +1,1 @@
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1MjcwMDIyMg==,size_16,color_FFFFFF,t_70.png)
+![img](./assert/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3d1MjcwMDIyMg==,size_16,color_FFFFFF,t_70.png)

@@ -24,13 +24,13 @@ RabbitMQ是一个开源的消息代理中间件。它接收生产者发布的消
 
 交换机代理（exchange agent）负责把消息分发到不同的队列里。这样的话，消息就能够从生产者发送到交换机，然后被分发到消息队列里。这就是常见的“发布”方法。
 
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/15423847-a993cb2f86e90797.jpg-itluobo.png)
+![img](./assert/15423847-a993cb2f86e90797.jpg-itluobo.png)
 
 然后，消息会被消费者从队列里读取并消费，这就是“消费”。
 
 ### rabbitmq的进程模型
 
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/20180812231333289.jpeg)
+![img](./assert/20180812231333289.jpeg)
 
 看到这个图，相信大家应该很熟悉，没错就是事件驱动模型（或者说反应堆模型），这是一种高性能的非阻塞io线程模型，不过在Erlang中称为进程模型。
 
@@ -54,7 +54,7 @@ rabbit_msg_store是负责消息持久化的进程。
 
 对一个复杂的应用而言，往往会有多个消息队列，所以消息也会被发往多个队列。
 
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/15423847-3bc16e912d7edbc2.jpg-itluobo.png)
+![img](./assert/15423847-3bc16e912d7edbc2.jpg-itluobo.png)
 
 给带有多个队列的交换机发送的消息是通过绑定和路由键来进行分发的。绑定是你设置的用来连接一个队列和交换机的连接。路由键是消息的一个属性。交换机会根据路由键来决定消息分发到那个队列里（取决于交换机的类型）。
 
@@ -70,7 +70,7 @@ rabbit_msg_store是负责消息持久化的进程。
 
 消息并不是直接发布到队里里的，而是被生产者发送到一个交换机上。交换机负责把消息发布到不同的队列里。交换机从生产者应用上接收消息，然后根据绑定和路由键将消息发送到对应的队列里。绑定是交换机和队列之间的一个关系连接。
 
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/15423847-64968e7b1f06b8d0.jpg-itluobo.png)
+![img](./assert/15423847-64968e7b1f06b8d0.jpg-itluobo.png)
 
 **交换机类型**
 
@@ -78,7 +78,7 @@ rabbit_msg_store是负责消息持久化的进程。
 2. **扇出（Fanout）**：广播式交换器，不管消息的ROUTING_KEY设置为什么，Exchange都会将消息转发给所有绑定的Queue。
 3. **主题（Topic）**：这个交换机会将路由键和绑定上的模式进行通配符匹配。比如，ROUTING_KEY为user.stock的Message会转发给绑定匹配模式为 * .stock,user.stock， * . * 和#.user.stock.#的队列。（ * 表是匹配一个任意词组，#表示匹配0个或多个词组）
 4. **消息头（Headers）**：消息头交换机使用消息头的属性进行消息路由。
-![img](/Users/afuka/Documents/Typora/服务端积累/assert/15423847-0c9b03fc31e8ac5a.jpg-itluobo.png)
+![img](./assert/15423847-0c9b03fc31e8ac5a.jpg-itluobo.png)
 
 ### 绑定（Binding）
 
@@ -115,11 +115,11 @@ AMQP规范定义了五种类型的帧：协议头帧、方法帧、内容帧、�
 delivery-mode有两个值：1表示非持久化，2表示持久化消息
 
 1.发送消息到纯内存队列中，delivery-mode = 1
-![这里写图片描述](/Users/afuka/Documents/Typora/服务端积累/assert/rabbitmq70.png)
+![这里写图片描述](./assert/rabbitmq70.png)
 特点：非持久化的消息在服务宕机的时候会丢失数据，但是由于不需要磁盘io，尽可能地降低消息投递的延迟性，性能较高。
 
 2.发布消息到支持磁盘存储的队列，delivery-mode = 2
-![这里写图片描述](/Users/afuka/Documents/Typora/服务端积累/assert/rabbitmq701.png)
+![这里写图片描述](./assert/rabbitmq701.png)
 特点：持久化的消息安全性较高，尽管服务宕机，数据也不会丢失，但是在投递消息的过程中需要发生磁盘io，性能相对纯内存投递的方式低，但是尽管是产生了磁盘io，由于日志的记录方式是直接追加到消息日志文件的末尾，属于顺序io，没有随机io，所以性能还是可以接受的。
 
 1. 大概原理：
@@ -157,7 +157,7 @@ delta，消息的内容和索引都在磁盘。
 (2) 5个内部队列
 
 包括：q1、q2、delta、q3、q4。q1和q4队列中只有alpha状态的消息；q2和q3包含beta和gamma状态的消息；delta队列是消息按序存盘后的一种逻辑队列，只有delta状态的消息。所以delta队列并不在内存中，其他4个队列则是由erlang queue模块实现。
-![这里写图片描述](/Users/afuka/Documents/Typora/服务端积累/assert/rabbitmq73.png)
+![这里写图片描述](./assert/rabbitmq73.png)
 消息从q1入队，q4出队，在内部队列中传递的过程一般是经q1顺序到q4。实际执行并非必然如此：开始时所有队列都为空，消息直接进入q4（没有消息堆积时）；内存紧张时将q4队尾部分消息转入q3，进而再由q3转入delta，此时新来的消息将存入q1（有消息堆积时）。
 
 当内存紧张时触发paging，paging将大量alpha状态的消息转换为beta和gamma；如果内存依然紧张，继续将beta和gamma状态转换为delta状态。Paging是一个持续过程，涉及到大量消息的多种状态转换，所以Paging的开销较大，严重影响系统性能。

@@ -10,15 +10,15 @@ RabbitMQ，和一般的消息传递，使用专业术语。
 
 生产者的工作就是发送消息。发送消息的程序是生产者：
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/14.png)
+![clipboard.png](./assert/14.png)
 
 队列类比一个邮箱，存在于RabbitMQ， 然而信息流通过RabbitMQ和您的应用程序，他们只能存储在一个队列。队列只受主机内存和磁盘限制的约束，它本质上是一个很大的消息缓冲区。会有许多生产者可以发送到一个队列的消息，许多消费者可以尝试从一个队列接收数据。这就是我们如何表示队列的方式：
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/15.png)
+![clipboard.png](./assert/15.png)
 
 消费者和生产者有着相似的意义. 消费者无非就是等待消息然后处理的程序:
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/16.png)
+![clipboard.png](./assert/16.png)
 
 请注意，生产者、消费者和代理不必同一主机上；事实上，在大多数应用程序中它们没有这样做。
 
@@ -30,7 +30,7 @@ RabbitMQ，和一般的消息传递，使用专业术语。
 
 在下图中，“p”是我们的生产商，“C”是我们的消费者。在中间的框是一个队列的消息缓冲区，RabbitMQ保持代表的消费。
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/17.png)
+![clipboard.png](./assert/17.png)
 
 ### 2.1.PHP amqplib客户端库
 
@@ -54,7 +54,7 @@ composer require php-amqplib/php-amqplib
 
 ### 3.1生产者（消息发送方）
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/18.png)
+![clipboard.png](./assert/18.png)
 
 我们命令我们的消息发布者（发送者）send.php和消息接收receive.php。发送者将连接到RabbitMQ，发送一条消息，然后退出。
 
@@ -103,7 +103,7 @@ $connection->close();
 
 消费者从RabbitMQ接收推来的消息，我们会保持运行监听消息并打印出来。
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/19.png)
+![clipboard.png](./assert/19.png)
 
 引入lib
 
@@ -404,7 +404,7 @@ $msg = new AMQPMessage($data, array('delivery_mode' => AMQPMessage::DELIVERY_MOD
 
 这是因为RabbitMQ只是调度消息时，消息进入队列。当存在未确认的消息时。它只是盲目的分发n-th条消息给n-th个消费者。
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/20.png)
+![clipboard.png](./assert/20.png)
 
 为了改变这个分配方式，我们可以调用basic_qos方法，设置参数prefetch_count = 1。这告诉RabbitMQ不要在一个时间给一个消费者多个消息。或者，换句话说，在处理和确认以前的消息之前，不要向消费者发送新消息。相反，它将发送给下一个仍然不忙的消费者。
 
@@ -515,7 +515,7 @@ RabbitMQ消息传递模型的核心思想是，生产者不发送任何信息直
 
 相反，生产商只能向交换机（Exchange）发送消息。交换机做的事情很简单。一方面，它接收来自生产者的信息，另一边则推他们排队。Exchange必须知道如何处理接收到的消息。应该附加到特定队列吗？它应该被添加到多个队列？还是应该被抛弃？。这个规则是由交换类型定义的。
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/21.png)
+![clipboard.png](./assert/21.png)
 
 有几种交换类型可用：direct, topic, headers 和 fanout。我们将集中讨论最后一个——fanout。让我们创建这种类型的交换，并称之为日志：
 
@@ -576,7 +576,7 @@ list($queue_name, ,) = $channel->queue_declare("");
 
 ## 5.绑定(Bindings)
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/22.png)
+![clipboard.png](./assert/22.png)
 
 我们已经创建了fanout交换机和队列。现在我们需要告诉Exchange发送消息到我们的队列中。交换和队列之间的关系称为绑定。
 
@@ -596,7 +596,7 @@ $channel->queue_bind($queue_name, 'logs');
 
 ## 6.让我们把所有整理在一起(Putting it all together)
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/23.png)
+![clipboard.png](./assert/23.png)
 
 生成日志消息的生成程序与前面的教程没有多大区别。最重要的变化是，我们现在希望把消息发布到我们的日志交换，而不是无名的。这里给出`emit_log.php`代码：
 
@@ -738,7 +738,7 @@ $channel->queue_bind($queue_name, $exchange_name, $binding_key);
 
 为了说明这一点，请考虑以下设置：
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/24.png)
+![clipboard.png](./assert/24.png)
 
 在这个设置中，我们可以看到两个队列绑定到它的`direct`交换机X。第一个队列与绑定键`orange`绑定，第二个绑定有两个绑定，一个绑定键`black`，另一个绑定`green`。
 
@@ -746,7 +746,7 @@ $channel->queue_bind($queue_name, $exchange_name, $binding_key);
 
 ## 5.多个绑定 (Multiple bindings)
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/25.png)
+![clipboard.png](./assert/25.png)
 
 用相同的绑定键绑定多个队列是完全合法的。在我们的示例中，我们可以在绑定绑定键`X`和`Q1`之间添加一个绑定。在这种情况下，`direct`交换机将表现为fanout交换机，并将消息发送到所有匹配队列。将带有路由键`black`的消息发送给`Q1`和`Q2`。
 
@@ -781,7 +781,7 @@ foreach($severities as $severity) {
 
 代码都放在一起：
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/26.png)
+![clipboard.png](./assert/26.png)
 
 emit_log_direct.php源码:
 
@@ -906,7 +906,7 @@ php emit_log_direct.php error "Run. Run. Or it will explode."
 
 在一个例子中解释这一点是最容易的：
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/27.png)
+![clipboard.png](./assert/27.png)
 
 在这个示例中，我们将发送所有描述动物的消息。消息将用一个包含三个单词（两个点）的路由键发送。路由键中的第一个字将描述速度，第二个颜色和第三个种：`<speed>.<colour>.<species>`。
 
@@ -1111,7 +1111,7 @@ $channel->basic_publish($msg, '', 'rpc_queue');
 
 ## 5.总结
 
-![clipboard.png](/Users/afuka/Documents/Typora/服务端积累/assert/28.png)
+![clipboard.png](./assert/28.png)
 
 我们的RPC会像这样工作：
 

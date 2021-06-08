@@ -15,8 +15,6 @@ rpm -ivh https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.6.7
 
 安装完成后显示，需要按照提示，修改配置文件url地址为本地服务器地址并重新加载配置：
 
-![image-20210222165012268](/Users/afuka/Library/Application Support/typora-user-images/image-20210222165012268.png)
-
 ```
 vim /etc/gitlab/gitlab.rb
 # 编辑，注意要与nginx代理相同
