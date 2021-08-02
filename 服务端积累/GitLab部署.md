@@ -1,4 +1,4 @@
-# 1828126011安装
+# 安装
 
 使用清华大学开源软件镜像`https://mirrors.tuna.tsinghua.edu.cn/gitlab-ce/yum/el7/gitlab-ce-13.6.7-ce.0.el7.x86_64.rpm`
 
