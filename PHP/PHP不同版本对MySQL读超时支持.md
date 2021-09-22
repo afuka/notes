@@ -29,13 +29,10 @@
 if (!defined('MYSQL_OPT_READ_TIMEOUT')) {
     define('MYSQL_OPT_READ_TIMEOUT',  11);
 }
-if (!defined('MYSQL_OPT_WRITE_TIMEOUT')) {
-    define('MYSQL_OPT_WRITE_TIMEOUT', 12);
-}
 
 $connection = mysqli_init();
 var_dump($connection->options(MYSQLI_OPT_CONNECT_TIMEOUT, 1));
-var_dump($connection->options(MYSQLI_OPT_READ_TIMEOUT, 1)); // 其中这个在php7.0.6环境下返回了false
+var_dump($connection->options(MYSQL_OPT_READ_TIMEOUT, 1)); // 其中这个在php7.0.6环境下返回了false
 $connection->real_connect('localhost', 'root', '11111111', 'test');
 
 $result = $connection->query("SELECT * FROM trade;");
