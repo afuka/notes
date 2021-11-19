@@ -6,7 +6,8 @@
 - `{`: 前移1段。
 - `}`: 后移1段。
 - `:n` 移动到第n行。
-- `:set number` 显示行号 
+
+  
 
 ## 2. 编辑
 - `A`: 在当前行最后插入；
@@ -25,7 +26,15 @@
 - `ctrl+w+w`: 切换到下一个窗口。
 - `:close` : 关闭当前窗口
 
+## 4. 配置
 
+- `:set number` 显示行号 
+- `syntax on` 代码高亮
+- `set autoindent` 按下回车键后，下一行的缩进会自动跟上一行的缩进保持一致
+- `set wrap` 自动折行，取消的时候使用 `set nowrap`
+- `set showmatch`光标遇到圆括号、方括号、大括号时，自动高亮对应的另一个圆括号、方括号和大括号。
+- `set hlsearch`搜索时，高亮显示匹配结果
+- `set ignorecase`搜索时忽略大小写。
 
 # [2. 启动Vim](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id61)
 
