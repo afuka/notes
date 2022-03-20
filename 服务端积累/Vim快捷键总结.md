@@ -36,7 +36,7 @@
 - `set hlsearch`搜索时，高亮显示匹配结果
 - `set ignorecase`搜索时忽略大小写。
 
-# [2. 启动Vim](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id61)
+# 2. 启动Vim
 
 - vim -c cmd file: 在打开文件前，先执行指定的命令；
 - vim -r file: 恢复上次异常退出的文件；
@@ -48,7 +48,7 @@
 - vim +/string file: 打开file，并将光标停留在第一个找到的string上。
 - vim --remote file: 用已有的vim进程打开指定的文件。 如果你不想启用多个vim会话，这个很有用。但要注意， 如果你用vim，会寻找名叫VIM的服务器；如果你已经有一个gvim在运行了， 你可以用gvim --remote file在已有的gvim中打开文件。
 
-# [3. 文档操作](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id62)
+# 3. 文档操作
 
 - :e file --关闭当前编辑的文件，并开启新的文件。 如果对当前文件的修改未保存，vi会警告。
 - :e! file --放弃对当前文件的修改，编辑新的文件。
@@ -75,9 +75,9 @@
 - :Sex -- 水平分割一个窗口，浏览文件系统；
 - :Vex -- 垂直分割一个窗口，浏览文件系统；
 
-# [4. 光标的移动](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id63)
+# 4. 光标的移动
 
-## [4.1 基本移动](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id64)
+## 4.1 基本移动
 
 以下移动都是在normal模式下。
 
@@ -126,7 +126,7 @@
 - gg: 到文件头部。
 - G: 到文件尾部。
 
-## [4.2 翻屏](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id65)
+## 4.2 翻屏
 
 - ctrl+f: 下翻一屏。
 - ctrl+b: 上翻一屏。
@@ -139,7 +139,7 @@
 - zt: 将当前行移动到屏幕顶端。
 - zb: 将当前行移动到屏幕底端。
 
-## [4.3 标记](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id66)
+## 4.3 标记
 
 使用标记可以快速移动。到达标记后，可以用Ctrl+o返回原来的位置。 Ctrl+o和Ctrl+i 很像浏览器上的 *后退* 和 *前进* 。
 
@@ -158,9 +158,9 @@
 - :delmarks! -- 删除当前缓冲区的所有标记。
 - :help mark-motions 查看更多关于mark的知识。
 
-# [5. 插入文本](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id67)
+# 5. 插入文本
 
-## [5.1 基本插入](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id68)
+## 5.1 基本插入
 
 - i: 在光标前插入；一个小技巧：按8，再按i，进入插入模式，输入=， 按esc进入命令模式，就会出现8个=。 这在插入分割线时非常有用，如30i+<esc>就插入了36个+组成的分割线。
 - I: 在当前行第一个非空字符前插入；
@@ -173,7 +173,7 @@
 - :[n]r filename在第n行插入另一个文件的内容。
 - :r !date 在光标处插入当前日期与时间。同理，:r !command可以将其它shell命令的输出插入当前文档。
 
-## [5.2 改写插入](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id69)
+## 5.2 改写插入
 
 - c[n]w: 改写光标后1(n)个词。
 - c[n]l: 改写光标后n个字母。
@@ -184,9 +184,9 @@
 
 注意，类似cnw,dnw,ynw的形式同样可以写为ncw,ndw,nyw。
 
-# [6. 剪切复制和寄存器](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id70)
+# 6. 剪切复制和寄存器
 
-## [6.1 剪切和复制、粘贴](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id71)
+## 6.1 剪切和复制、粘贴
 
 - [n]x: 剪切光标右边n个字符，相当于d[n]l。
 - [n]X: 剪切光标左边n个字符，相当于d[n]h。
@@ -217,7 +217,7 @@
 - p: 在光标之后粘贴。
 - P: 在光标之前粘贴。
 
-## [6.2 文本对象](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id72)
+## 6.2 文本对象
 
 - aw：一个词
 - as：一句。
@@ -226,7 +226,7 @@
 
 y, d, c, v都可以跟文本对象。
 
-## [6.3 寄存器](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id73)
+## 6.3 寄存器
 
 - a-z：都可以用作寄存器名。"ayy把当前行的内容放入a寄存器。
 - A-Z：用大写字母索引寄存器，可以在寄存器中追加内容。 如"Ayy把当前行的内容追加到a寄存器中。
@@ -235,9 +235,9 @@ y, d, c, v都可以跟文本对象。
 - "*：当前选择缓冲区，"*yy把当前行的内容放入当前选择缓冲区。
 - "+：系统剪贴板。"+yy把当前行的内容放入系统剪贴板。
 
-# [7. 查找与替换](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id74)
+# 7. 查找与替换
 
-## [7.1 查找](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id75)
+## 7.1 查找
 
 - /something: 在后面的文本中查找something。
 - ?something: 在前面的文本中查找something。
@@ -272,7 +272,7 @@ vimgrep前面可以加数字限定搜索结果的上限，如
 
 就更像个目录了。
 
-## [7.2 替换](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id76)
+## 7.2 替换
 
 - :s/old/new - 用new替换当前行第一个old。
 - :s/old/new/g - 用new替换当前行所有的old。
@@ -299,7 +299,7 @@ vimgrep前面可以加数字限定搜索结果的上限，如
 - .: 当前行
 - %: 所有行
 
-## [7.3 正则表达式](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id77)
+## 7.3 正则表达式
 
 高级的查找替换就要用到正则表达式。
 
@@ -317,9 +317,9 @@ vimgrep前面可以加数字限定搜索结果的上限，如
 
 ------
 
-# [8. 排版](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id78)
+# 8. 排版
 
-## [8.1 基本排版](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id79)
+## 8.1 基本排版
 
 - << 向左缩进一个shiftwidth
 - \>> 向右缩进一个shiftwidth
@@ -336,7 +336,7 @@ vimgrep前面可以加数字限定搜索结果的上限，如
 - J 拼接当前行和下一行
 - gJ 同 J ，不过合并后不留空格。
 
-## [8.2 拼写检查](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id80)
+## 8.2 拼写检查
 
 - :set spell－开启拼写检查功能
 - :set nospell－关闭拼写检查功能
@@ -346,15 +346,14 @@ vimgrep前面可以加数字限定搜索结果的上限，如
 - zg－告诉拼写检查器该单词是拼写正确的
 - zw－与上一命令相反，告诉拼写检查器该单词是拼写错误的
 
-## [8.3 统计字数](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id81)
-
-g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 以上对 Mac 或 Unix 的文件格式适用。 如果是 [Windows](https://www.baidu.com/s?wd=Windows&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd) 文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。
+## 8.3 统计字数
+g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上，用字符数减去行数可以粗略统计中文文档的字数。 以上对 Mac 或 Unix 的文件格式适用。 如果是 [Windows]文件格式（即换行符有两个字节），字数的统计方法为： 字符数 - 行数 * 2。
 
 ------
 
-# [9. 编辑多个文件](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id82)
+# 9. 编辑多个文件
 
-## [9.1 一次编辑多个文件](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id83)
+## 9.1 一次编辑多个文件
 
 我们可以一次打开多个文件，如
 
@@ -372,7 +371,7 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - vi -o filenames 在水平分割的多个窗口中编辑多个文件。
 - vi -O filenames 在垂直分割的多个窗口中编辑多个文件。
 
-## [9.2 多标签编辑](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id84)
+## 9.2 多标签编辑
 
 - vim -p files: 打开多个文件，每个文件占用一个标签页。
 - :tabe, tabnew -- 如果加文件名，就在新的标签中打开这个文件， 否则打开一个空缓冲区。
@@ -387,7 +386,7 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - :tabs -- 列出所有的标签页和它们包含的窗口。
 - :tabm[ove] [N] -- 移动标签页，移动到第N个标签页之后。 如 tabm 0 当前标签页，就会变成第一个标签页。
 
-## [9.3 缓冲区](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id85)
+## 9.3 缓冲区
 
 - :buffers或:ls或:files 显示缓冲区列表。
 - ctrl+^：在最近两个缓冲区间切换。
@@ -399,12 +398,12 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - :nbd(elete) -- 删除第n个缓冲区，并未真正删除，还在unlisted列表中。
 - :ba[ll] -- 把所有的缓冲区在当前页中打开，每个缓冲区占一个窗口。
 
-# [10. 分屏编辑](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id86)
+# 10. 分屏编辑
 
 - vim -o file1 file2:水平分割窗口，同时打开file1和file2
 - vim -O file1 file2:垂直分割窗口，同时打开file1和file2
 
-## [10.1 水平分割](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id87)
+## 10.1 水平分割
 
 - :split(:sp) -- 把当前窗水平分割成两个窗口。(CTRL-W s 或 CTRL-W CTRL-S) 注意如果在终端下，CTRL-S可能会冻结终端，请按CTRL-Q继续。
 - 让水平分割窗口同时滚动，在两个窗口中输入   ：set scb
@@ -414,20 +413,20 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - ctrl+w f --水平分割出一个窗口，并在新窗口打开名称为光标所在词的文件 。
 - C-w C-^ -- 水平分割一个窗口，打开刚才编辑的文件。
 
-## [10.2 垂直分割](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id88)
+## 10.2 垂直分割
 
 - :vsplit(:vsp) -- 把当前窗口分割成水平分布的两个窗口。 (CTRL-W v或CTRL CTRL-V)
 - :[N]vne[w] -- 垂直分割出一个新窗口。
 - :vertical 水平分割的命令： 相应的垂直分割。
 
-## [10.3 关闭子窗口](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id89)
+## 10.3 关闭子窗口
 
 - :qall -- 关闭所有窗口，退出vim。
 - :wall -- 保存所有修改过的窗口。
 - :only -- 只保留当前窗口，关闭其它窗口。(CTRL-W o)
 - :close -- 关闭当前窗口，CTRL-W c能实现同样的功能。 (象 :q :x同样工作 )
 
-## [10.4 调整窗口大小](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id90)
+## 10.4 调整窗口大小
 
 - ctrl+w + --当前窗口增高一行。也可以用n增高n行。
 - ctrl+w - --当前窗口减小一行。也可以用n减小n行。
@@ -439,7 +438,7 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - ctrl+w > --当前窗口增宽一列。也可以用n增宽n列。
 - ctrl+w | --当前窗口尽可能的宽。也可以用n设定列数。
 
-## [10.5 切换和移动窗口](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id91)
+## 10.5 切换和移动窗口
 
 如果支持鼠标，切换和调整子窗口的大小就简单了。
 
@@ -451,20 +450,20 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - ctrl+w r：旋转窗口的位置。
 - ctrl+w T: 将当前的窗口移动到新的标签页上。
 
-# [11. 快速编辑](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id92)
+# 11. 快速编辑
 
-## [11.1 改变大小写](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id93)
+## 11.1 改变大小写
 
 - ~: 反转光标所在字符的大小写。
 - 可视模式下的U或u：把选中的文本变为大写或小写。
 - gu(U)接范围（如$，或G），可以把从光标当前位置到指定位置之间字母全部 转换成小写或大写。如ggguG，就是把开头到最后一行之间的字母全部变为小 写。再如gu5j，把当前行和下面四行全部变成小写。
 
-## [11.2 替换（normal模式）](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id94)
+## 11.2 替换（normal模式）
 
 - r: 替换光标处的字符，同样支持汉字。
 - R: 进入替换模式，按esc回到正常模式。
 
-## [11.3 撤消与重做（normal模式）](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id95)
+## 11.3 撤消与重做（normal模式）
 
 - [n] u: 取消一(n)个改动。
 - :undo 5 -- 撤销5个改变。
@@ -474,16 +473,16 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - :earlier 4m -- 回到4分钟前
 - :later 55s -- 前进55秒
 
-## [11.4 宏](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id96)
+## 11.4 宏
 
 - . --重复上一个编辑动作
 - qa：开始录制宏a（键盘操作记录）
 - q：停止录制
 - @a：播放宏a
 
-# [12. 编辑特殊文件](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id97)
+# 12. 编辑特殊文件]
 
-## [12.1 文件加解密](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id98)
+## 12.1 文件加解密
 
 - vim -x file: 开始编辑一个加密的文件。
 - :X -- 为当前文件设置密码。
@@ -491,7 +490,7 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 
 [这里是](http://www.cnblogs.com/jiqingwu/admin/vim-quick-edit.html) 滇狐总结的比较高级的vi技巧。
 
-## [12.2 文件的编码](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id99)
+## 12.2 文件的编码
 
 - :e ++enc=utf8 filename, 让vim用utf-8的编码打开这个文件。
 - :w ++enc=gbk，不管当前文件什么编码，把它转存成gbk编码。
@@ -500,7 +499,7 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 
 让vim 正确处理文件格式和文件编码，有赖于 [~/.vimrc的正确配置](http://www.cnblogs.com/jiqingwu/admin/vimrc.html)
 
-## [12.3 文件格式](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id100)
+## 12.3 文件格式
 
 大致有三种文件格式：unix, dos, mac. 三种格式的区别主要在于回车键的编码：dos 下是回车加换行，unix 下只有 换行符，mac 下只有回车符。
 
@@ -509,10 +508,9 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - :set ff，显示当前文件的格式。
 - 在vimrc中添加set fileformats=unix,dos,mac，让vim自动识别文件格式。
 
-# [13. 编程辅助](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id101)
+# 13. 编程辅助
 
-## [13.1 一些按键](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id102)
-
+## 13.1 一些按键
 - gd: 跳转到局部变量的定义处；
 - gD: 跳转到全局变量的定义处，从当前文件开头开始搜索；
 - g;: 上一个修改过的地方；
@@ -542,7 +540,7 @@ g ^g可以统计文档字符数，行数。 将光标放在最后一个字符上
 - ci<, di<, yi<：修改、剪切或复制<>之间的内容。
 - ca<, da<, ya<：修改、剪切或复制<>之间的内容，包含<>。
 
-## [13.2 ctags](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id103)
+## 13.2 ctags
 
 - ctags -R: 生成tag文件，-R表示也为子目录中的文件生成tags
 - :set tags=path/tags -- 告诉ctags使用哪个tag文件
@@ -566,14 +564,14 @@ tab键补齐
 - :tag xyz<tab> -- 补齐以xyz开头的tag名，继续按tab键，会显示其他的。
 - :tag /xyz<tab> -- 会用名字中含有xyz的tag名补全。
 
-## [13.3 cscope](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id104)
+## 13.3 cscope
 
 - cscope -Rbq: 生成cscope.out文件
 - :cs add /path/to/cscope.out /your/work/dir
 - :cs find c func -- 查找func在哪些地方被调用
 - :cw -- 打开quickfix窗口查看结果
 
-## [13.4 gtags](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id105)
+## 13.4 gtags
 
 Gtags综合了ctags和cscope的功能。 使用Gtags之前，你需要安装GNU Gtags。 然后在工程目录运行 gtags 。
 
@@ -584,7 +582,7 @@ Gtags综合了ctags和cscope的功能。 使用Gtags之前，你需要安装GNU 
 - :Gtags -f filename 显示 filename 中的函数列表。 你可以用 :Gtags -f % 显示当前文件。
 - :Gtags -P pattern 显示路径中包含特定模式的文件。 如 :Gtags -P .h$ 显示所有头文件， :Gtags -P /vm/ 显示vm目录下的文件。
 
-## [13.5 编译](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id106)
+## 13.5 编译
 
 vim提供了:[make](https://www.baidu.com/s?wd=make&tn=24004469_oem_dg&rsv_dl=gh_pl_sl_csd)来编译程序，默认调用的是make， 如果你当前目录下有makefile，简单地:make即可。
 
@@ -602,7 +600,7 @@ set makeprg=javac\ abc.java
 
 %f表示文件名，%l表示行号， %m表示错误信息，其它的还不能理解。 请参考 :help errorformat。
 
-## [13.6 快速修改窗口](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id107)
+## 13.6 快速修改窗口
 
 其实是quickfix插件提供的功能， 对编译调试程序非常有用 :)
 
@@ -616,7 +614,7 @@ set makeprg=javac\ abc.java
 - :cp -- 定位到上一个错误。
 - :cr -- 定位到第一个错误。
 
-## [13.7 自动补全](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id108)
+## 13.7 自动补全
 
 - C-x C-s -- 拼写建议。
 - C-x C-v -- 补全vim选项和命令。
@@ -635,7 +633,7 @@ set makeprg=javac\ abc.java
 - C-e 退出下拉菜单，并退回到原来录入的文字；
 - C-y 退出下拉菜单，并接受当前选项。
 
-## [13.8 多行缩进缩出](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id109)
+## 13.8 多行缩进缩出
 
 - 正常模式下，按两下>;光标所在行会缩进。
 - 如果先按了n，再按两下>;，光标以下的n行会缩进。
@@ -644,7 +642,7 @@ set makeprg=javac\ abc.java
 - 在可视模式下，选择要调整的代码块，按=，代码会按书写规则缩排好。
 - 或者n =，调整n行代码的缩排。
 
-## [13.9 折叠](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id110)
+## 13.9 折叠
 
 - zf -- 创建折叠的命令，可以在一个可视区域上使用该命令；
 - zd -- 删除当前行的折叠；
@@ -661,11 +659,11 @@ set makeprg=javac\ abc.java
 - zk -- 跳到上一个折叠处；
 - zi -- enable/disable fold;
 
-# [14. 命令行](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id111)
+# 14. 命令行
 
 normal模式下按:进入命令行模式
 
-## [14.1 命令行模式下的快捷键：](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id112)
+## 14.1 命令行模式下的快捷键：
 
 - 上下方向键：上一条或者下一条命令。如果已经输入了部分命令，则找上一 条或者下一条匹配的命令。
 - 左右方向键：左/右移一个字符。
@@ -680,7 +678,7 @@ normal模式下按:进入命令行模式
 - q： 正常模式下，q然后按':'，打开命令行历史缓冲区， 可以像编辑文件一样编辑命令。
 - q/和q? 可以打开查找历史记录。
 
-## [14.2 执行外部命令](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id113)
+## 14.2 执行外部命令
 
 - :! cmd 执行外部命令。
 - :!! 执行上一次的外部命令。
@@ -688,15 +686,15 @@ normal模式下按:进入命令行模式
 - :r !cmd 将命令的返回结果插入文件当前位置。
 - :m,nw !cmd 将文件的m行到n行之间的内容做为命令输入执行命令。
 
-# [15. 其它](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id114)
+# 15. 其它
 
-## [15.1 工作目录](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id115)
+## 15.1 工作目录
 
 - :pwd 显示vim的工作目录。
 - :cd path 改变vim的工作目录。
 - :set autochdir 可以让vim 根据编辑的文件自动切换工作目录。
 
-## [15.2 一些快捷键（收集中）](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id116)
+## 15.2 一些快捷键（收集中）
 
 - K: 打开光标所在词的manpage。
 - *: 向下查找光标所在词。
@@ -706,7 +704,7 @@ normal模式下按:进入命令行模式
 - g#: 同上，但部分符合即可。
 - g C-g: 统计全文或统计部分的字数。
 
-## [15.3 在线帮助](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id117)
+## 15.3 在线帮助
 
 - :h(elp)或F1 打开总的帮助。
 - :help user-manual 打开用户手册。
@@ -716,6 +714,6 @@ normal模式下按:进入命令行模式
 - Ctrl+] 跳转到tag主题，Ctrl+t 跳回。
 - :ver 显示版本信息。
 
-## [15.4 一些小功能](http://www.cnblogs.com/jiqingwu/archive/2012/06/14/vim_notes.html#id118)
+## 15.4 一些小功能
 
 - 简单计算器: 在插入模式下，输入C-r =，然后输入表达式，就能在 光标处得到计算结果
